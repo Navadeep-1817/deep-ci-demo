@@ -1,3 +1,4 @@
+
 name: CI Demo
 
 on:
@@ -14,9 +15,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run CI test
-        run: |
-          echo "Starting CI pipeline..."
-          test -f README.md
-          echo "README file exists."
-          echo "CI pipeline completed successfully!"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run Python application
+        run: python app.py
